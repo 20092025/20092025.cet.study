@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>英语学习每日智能奖励清单 - 优化版</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary-color: #4b6cb7;
@@ -14,19 +13,11 @@
             --card-bg: #ffffff;
             --text-dark: #333333;
             --text-light: #6c757d;
-            --border-radius: 12px;
-            --box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
         }
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
             background-color: var(--light-bg);
@@ -40,40 +31,21 @@
             padding: 25px;
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             color: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
             position: relative;
         }
         
-        .header h1 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-        }
-        
         .countdown {
+            position: absolute;
+            top: 15px;
+            right: 20px;
             background: rgba(255, 255, 255, 0.2);
             padding: 8px 15px;
             border-radius: 20px;
             font-size: 14px;
             font-weight: 600;
             backdrop-filter: blur(5px);
-            margin: 15px auto;
-            display: inline-block;
-        }
-        
-        .date-selector {
-            margin-top: 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        .date-selector input {
-            padding: 8px;
-            border: none;
-            border-radius: 5px;
         }
         
         .nav-tabs {
@@ -82,8 +54,7 @@
             background: var(--card-bg);
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: var(--box-shadow);
-            flex-wrap: wrap;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
         
         .nav-tab {
@@ -93,18 +64,12 @@
             cursor: pointer;
             transition: all 0.3s ease;
             border-bottom: 3px solid transparent;
-            min-width: 120px;
         }
         
         .nav-tab.active {
             border-bottom: 3px solid var(--primary-color);
             font-weight: 600;
             background-color: rgba(75, 108, 183, 0.1);
-        }
-        
-        .nav-tab i {
-            margin-right: 8px;
-            font-size: 18px;
         }
         
         .tab-content {
@@ -120,7 +85,7 @@
             background-color: var(--card-bg);
             padding: 20px;
             border-radius: 10px;
-            box-shadow: var(--box-shadow);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             margin-bottom: 25px;
         }
         
@@ -220,7 +185,7 @@
         
         .form-group input, .form-group select {
             width: 100%;
-            padding: 12px;
+            padding: 10px;
             border: 1px solid #ddd;
             border-radius: 5px;
             font-size: 16px;
@@ -235,20 +200,11 @@
             cursor: pointer;
             font-size: 16px;
             font-weight: 600;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .btn i {
-            margin-right: 8px;
+            transition: background-color 0.3s;
         }
         
         .btn:hover {
             background-color: var(--secondary-color);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
         
         .footer {
@@ -269,10 +225,10 @@
         
         .stat-card {
             background: white;
-            padding: 20px;
+            padding: 15px;
             border-radius: 8px;
             text-align: center;
-            box-shadow: var(--box-shadow);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         
         .stat-value {
@@ -282,58 +238,12 @@
             margin: 10px 0;
         }
         
-        .reward-item {
-            padding: 12px;
-            margin: 10px 0;
-            background: #f8f9fa;
-            border-radius: 8px;
-            border-left: 4px solid var(--accent-color);
-        }
-        
-        .mobile-bottom-nav {
-            display: none;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: white;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-            z-index: 1000;
-            padding: 10px;
-        }
-        
-        .mobile-nav-item {
-            flex: 1;
-            text-align: center;
-            padding: 10px;
-            color: var(--text-light);
-        }
-        
-        .mobile-nav-item.active {
-            color: var(--primary-color);
-        }
-        
-        .mobile-nav-item i {
-            font-size: 20px;
-            display: block;
-            margin: 0 auto 5px;
-        }
-        
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
         
         @media (max-width: 768px) {
-            body {
-                padding: 15px;
-                padding-bottom: 70px; /* 为底部导航留出空间 */
-            }
-            
-            .header h1 {
-                font-size: 1.5rem;
-            }
-            
             .data-form {
                 grid-template-columns: 1fr;
             }
@@ -343,42 +253,12 @@
             }
             
             .nav-tabs {
-                display: none;
-            }
-            
-            .mobile-bottom-nav {
-                display: flex;
-            }
-            
-            table {
-                display: block;
-                overflow-x: auto;
-            }
-            
-            th, td {
-                padding: 12px 8px;
-                font-size: 14px;
-            }
-            
-            .btn {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-            
-            .date-selector {
                 flex-direction: column;
             }
-        }
-        
-        /* 添加触摸设备优化 */
-        @media (hover: none) {
-            .btn:hover {
-                transform: none;
-                box-shadow: none;
-            }
             
-            .nav-tab:hover, .mobile-nav-item:hover {
-                background-color: initial;
+            .countdown {
+                position: static;
+                margin-top: 15px;
             }
         }
     </style>
@@ -391,36 +271,17 @@
             距离考试还有: <span id="countdown-days">--</span> 天
         </div>
         <div class="date-selector">
-            <label for="date">选择日期: </label>
+            <label for="date">日期: </label>
             <input type="date" id="date" name="date">
-            <button class="btn" onclick="updateDate()"><i class="fas fa-calendar-alt"></i> 更新日期</button>
+            <button class="btn" onclick="updateDate()" style="padding: 6px 12px; margin-left: 10px;">更新</button>
         </div>
     </div>
 
     <div class="nav-tabs">
-        <div class="nav-tab active" onclick="switchTab('daily-tab')"><i class="fas fa-tasks"></i> 每日任务</div>
-        <div class="nav-tab" onclick="switchTab('data-tab')"><i class="fas fa-database"></i> 学习数据</div>
-        <div class="nav-tab" onclick="switchTab('stats-tab')"><i class="fas fa-chart-bar"></i> 数据统计</div>
-        <div class="nav-tab" onclick="switchTab('rewards-tab')"><i class="fas fa-gift"></i> 奖励兑换</div>
-    </div>
-
-    <div class="mobile-bottom-nav">
-        <div class="mobile-nav-item active" onclick="switchTab('daily-tab')">
-            <i class="fas fa-tasks"></i>
-            <span>任务</span>
-        </div>
-        <div class="mobile-nav-item" onclick="switchTab('data-tab')">
-            <i class="fas fa-database"></i>
-            <span>数据</span>
-        </div>
-        <div class="mobile-nav-item" onclick="switchTab('stats-tab')">
-            <i class="fas fa-chart-bar"></i>
-            <span>统计</span>
-        </div>
-        <div class="mobile-nav-item" onclick="switchTab('rewards-tab')">
-            <i class="fas fa-gift"></i>
-            <span>奖励</span>
-        </div>
+        <div class="nav-tab active" onclick="switchTab('daily-tab')">每日任务</div>
+        <div class="nav-tab" onclick="switchTab('data-tab')">学习数据</div>
+        <div class="nav-tab" onclick="switchTab('stats-tab')">数据统计</div>
+        <div class="nav-tab" onclick="switchTab('rewards-tab')">奖励兑换</div>
     </div>
 
     <div id="daily-tab" class="tab-content active">
@@ -431,13 +292,10 @@
                 <div class="progress-text" id="progress-text">0%</div>
             </div>
             <p>目标: ≥80分可获得30分钟无负罪感娱乐时间</p>
-            <button class="btn" onclick="saveProgress()" style="margin-top: 15px;">
-                <i class="fas fa-save"></i> 保存进度
-            </button>
         </div>
 
         <div class="card">
-            <h3><i class="fas fa-star"></i> 每日核心任务</h3>
+            <h3>每日核心任务</h3>
             <table>
                 <thead>
                     <tr>
@@ -451,7 +309,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><input type="checkbox" class="checkbox" data-points="15" onclick="updatePoints(15, this)"></td>
+                        <td><input type="checkbox" class="checkbox" onclick="updatePoints(15, this)"></td>
                         <td class="category">词汇攻坚</td>
                         <td>学习并掌握35个新六级词汇/短语</td>
                         <td>必须能正确拼写、说出中文意思、并造一个正确句子。次日复习时能再次认出才算数。</td>
@@ -459,7 +317,7 @@
                         <td id="point1">0</td>
                     </tr>
                     <tr>
-                        <td><input type="checkbox" class="checkbox" data-points="20" onclick="updatePoints(20, this)"></td>
+                        <td><input type="checkbox" class="checkbox" onclick="updatePoints(20, this)"></td>
                         <td class="category">听力沉浸</td>
                         <td>完成1篇六级听力真题并精听复盘</td>
                         <td>听写出错题点的关键句，并跟读至语音语调基本一致。</td>
@@ -467,7 +325,7 @@
                         <td id="point2">0</td>
                     </tr>
                     <tr>
-                        <td><input type="checkbox" class="checkbox" data-points="25" onclick="updatePoints(25, this)"></td>
+                        <td><input type="checkbox" class="checkbox" onclick="updatePoints(25, this)"></td>
                         <td class="category">阅读解析</td>
                         <td>完成2篇六级阅读真题并精读分析</td>
                         <td>摘录2个长难句进行结构分析，并整理10个生词/短语。</td>
@@ -475,7 +333,7 @@
                         <td id="point3">0</td>
                     </tr>
                     <tr>
-                        <td><input type="checkbox" class="checkbox" data-points="20" onclick="updatePoints(20, this)"></td>
+                        <td><input type="checkbox" class="checkbox" onclick="updatePoints(20, this)"></td>
                         <td class="category">写作/翻译</td>
                         <td>完成1篇作文或2段翻译练习</td>
                         <td>必须使用至少5个本日或本周学习的新词汇或高级句型。</td>
@@ -483,7 +341,7 @@
                         <td id="point4">0</td>
                     </tr>
                     <tr>
-                        <td><input type="checkbox" class="checkbox" data-points="20" onclick="updatePoints(20, this)"></td>
+                        <td><input type="checkbox" class="checkbox" onclick="updatePoints(20, this)"></td>
                         <td class="category">综合投入</td>
                         <td>每日高效学习时长 ≥ 2.5小时</td>
                         <td>使用番茄钟记录，心不在焉的时间不计入。</td>
@@ -495,7 +353,7 @@
         </div>
 
         <div class="card">
-            <h3><i class="fas fa-check-double"></i> 外部验证任务 (每周至少完成3项)</h3>
+            <h3>外部验证任务 (每周至少完成3项)</h3>
             <table>
                 <thead>
                     <tr>
@@ -509,7 +367,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><input type="checkbox" class="checkbox" data-points="15" onclick="updatePoints(15, this)"></td>
+                        <td><input type="checkbox" class="checkbox" onclick="updatePoints(15, this)"></td>
                         <td class="category">AI作文评估</td>
                         <td>使用Grammarly/ChatGPT评估一篇作文</td>
                         <td>根据AI反馈修改并提交最终版</td>
@@ -517,7 +375,7 @@
                         <td id="point6">0</td>
                     </tr>
                     <tr>
-                        <td><input type="checkbox" class="checkbox" data-points="15" onclick="updatePoints(15, this)"></td>
+                        <td><input type="checkbox" class="checkbox" onclick="updatePoints(15, this)"></td>
                         <td class="category">口语练习</td>
                         <td>使用英语配音APP或AI对话工具练习</td>
                         <td>记录分数并比上周提高</td>
@@ -525,7 +383,7 @@
                         <td id="point7">0</td>
                     </tr>
                     <tr>
-                        <td><input type="checkbox" class="checkbox" data-points="20" onclick="updatePoints(20, this)"></td>
+                        <td><input type="checkbox" class="checkbox" onclick="updatePoints(20, this)"></td>
                         <td class="category">模拟测试</td>
                         <td>完成一套完整模拟测试</td>
                         <td>严格计时，自我评分</td>
@@ -533,7 +391,7 @@
                         <td id="point8">0</td>
                     </tr>
                     <tr>
-                        <td><input type="checkbox" class="checkbox" data-points="30" onclick="updatePoints(30, this)"></td>
+                        <td><input type="checkbox" class="checkbox" onclick="updatePoints(30, this)"></td>
                         <td class="category">外部测评</td>
                         <td>周末模考中单项成绩比上周有提升</td>
                         <td>需有第三方验证或通过标准测试确认</td>
@@ -547,7 +405,7 @@
 
     <div id="data-tab" class="tab-content">
         <div class="card">
-            <h3><i class="fas fa-database"></i> 学习数据记录</h3>
+            <h3>学习数据记录</h3>
             <p>记录详细学习数据以便进行深度分析和策略优化</p>
             
             <div class="data-form">
@@ -599,19 +457,13 @@
                 </div>
             </div>
             
-            <button class="btn" onclick="saveLearningData()" style="margin-top: 20px;">
-                <i class="fas fa-save"></i> 保存学习数据
-            </button>
-            
-            <button class="btn" onclick="clearLearningData()" style="background-color: #dc3545; margin-top: 20px;">
-                <i class="fas fa-trash"></i> 清除所有数据
-            </button>
+            <button class="btn" onclick="saveLearningData()" style="margin-top: 20px;">保存学习数据</button>
         </div>
     </div>
 
     <div id="stats-tab" class="tab-content">
         <div class="card">
-            <h3><i class="fas fa-chart-bar"></i> 学习数据统计</h3>
+            <h3>学习数据统计</h3>
             <p>基于记录的数据生成学习洞察，帮助优化学习策略</p>
             
             <div class="stats-grid">
@@ -640,47 +492,25 @@
                 </div>
             </div>
             
-            <button class="btn" onclick="calculateStats()" style="margin-top: 20px;">
-                <i class="fas fa-calculator"></i> 生成统计报告
-            </button>
+            <button class="btn" onclick="calculateStats()" style="margin-top: 20px;">生成统计报告</button>
         </div>
     </div>
 
     <div id="rewards-tab" class="tab-content">
         <div class="card">
-            <h3><i class="fas fa-gift"></i> 奖励兑换机制</h3>
-            
-            <div class="reward-item">
-                <h4><i class="fas fa-calendar-day"></i> 每日兑换</h4>
-                <p>累计得分 ≥ 80分，即可获得30分钟无负罪感的娱乐时间。</p>
-            </div>
-            
-            <div class="reward-item">
-                <h4><i class="fas fa-calendar-week"></i> 每周兑换</h4>
-                <p>本周每日平均分 ≥ 85分，周末可享受一次"大餐"或"电影"。</p>
-            </div>
-            
-            <div class="reward-item">
-                <h4><i class="fas fa-calendar-alt"></i> 阶段兑换（每28天）</h4>
-                <p>完成阶段目标且每周均分达标，兑换一次中型奖励（如买一本喜欢的书、看一场演出）。</p>
-            </div>
-            
-            <div class="reward-item">
-                <h4><i class="fas fa-check-circle"></i> 外部验证奖励</h4>
-                <p>每周完成3项外部验证任务，额外奖励一次小型娱乐活动。</p>
-            </div>
-            
-            <div class="reward-item">
-                <h4><i class="fas fa-trophy"></i> 终极奖励</h4>
-                <p>84天后达到650分目标，奖励自己一次梦想之旅或心仪已久的电子产品。</p>
-            </div>
+            <h3>奖励兑换机制</h3>
+            <ul>
+                <li><strong>每日兑换</strong>: 累计得分 ≥ 80分，即可获得30分钟无负罪感的娱乐时间。</li>
+                <li><strong>每周兑换</strong>: 本周每日平均分 ≥ 85分，周末可享受一次"大餐"或"电影"。</li>
+                <li><strong>阶段兑换（每28天）</strong>: 完成阶段目标且每周均分达标，兑换一次中型奖励（如买一本喜欢的书、看一场演出）。</li>
+                <li><strong>外部验证奖励</strong>: 每周完成3项外部验证任务，额外奖励一次小型娱乐活动。</li>
+                <li><strong>终极奖励</strong>: 84天后达到650分目标，奖励自己一次梦想之旅或心仪已久的电子产品。</li>
+            </ul>
             
             <div style="margin-top: 20px; padding: 15px; background-color: #e8f4f8; border-radius: 8px;">
-                <h4><i class="fas fa-gift"></i> 本周可兑换奖励</h4>
+                <h4>本周可兑换奖励</h4>
                 <p id="available-rewards">每日得分达到80分即可解锁奖励</p>
-                <button class="btn" onclick="claimReward()" style="margin-top: 10px;">
-                    <i class="fas fa-ticket-alt"></i> 领取奖励
-                </button>
+                <button class="btn" onclick="claimReward()" style="margin-top: 10px;">领取奖励</button>
             </div>
         </div>
     </div>
@@ -691,35 +521,29 @@
 
     <script>
         let totalPoints = 0;
-        let learningData = JSON.parse(localStorage.getItem('learningData')) || [];
-        let currentDate = new Date().toISOString().split('T')[0];
+        let learningData = [];
         
-        // 初始化页面
+        // 为每一行添加ID以便识别
         document.addEventListener('DOMContentLoaded', function() {
+            const rows = document.querySelectorAll('tbody tr');
+            rows.forEach((row, index) => {
+                row.id = index + 1;
+            });
+            
             // 设置默认日期为今天
-            document.getElementById('date').value = currentDate;
-            document.getElementById('learning-date').value = currentDate;
+            const today = new Date();
+            document.getElementById('date').value = formatDate(today);
+            document.getElementById('learning-date').value = formatDate(today);
             
             // 初始化倒计时
             updateExamCountdown();
-            
-            // 加载保存的进度
-            loadProgress();
-            
-            // 初始化移动端日期选择器
-            initMobileDateSelector();
         });
         
-        function initMobileDateSelector() {
-            // 检测是否为移动设备
-            if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                // 设置日期输入类型为触摸友好的方式
-                const dateInput = document.getElementById('date');
-                const learningDateInput = document.getElementById('learning-date');
-                
-                if(dateInput) dateInput.type = 'date';
-                if(learningDateInput) learningDateInput.type = 'date';
-            }
+        function formatDate(date) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
         }
         
         // 更新考试倒计时
@@ -746,17 +570,11 @@
                 tab.classList.remove('active');
             });
             
-            // 取消移动导航的活动状态
-            document.querySelectorAll('.mobile-nav-item').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
             // 显示选中的标签内容
             document.getElementById(tabId).classList.add('active');
             
             // 设置选中的标签为活动状态
             document.querySelector(`.nav-tab[onclick="switchTab('${tabId}')"]`).classList.add('active');
-            document.querySelector(`.mobile-nav-item[onclick="switchTab('${tabId}')"]`).classList.add('active');
         }
         
         function updatePoints(points, checkbox) {
@@ -779,9 +597,6 @@
             
             // 更新可兑换奖励显示
             updateAvailableRewards();
-            
-            // 自动保存进度
-            saveProgress();
         }
         
         function updateDate() {
@@ -793,10 +608,6 @@
             
             if (diffDays >= 1 && diffDays <= 84) {
                 document.getElementById('day-counter').textContent = diffDays;
-                currentDate = dateInput.value;
-                
-                // 加载新日期的进度
-                loadProgress();
             } else {
                 alert('请输入84天计划内的有效日期');
             }
@@ -815,8 +626,6 @@
             };
             
             learningData.push(data);
-            localStorage.setItem('learningData', JSON.stringify(learningData));
-            
             alert('学习数据已保存！已保存' + learningData.length + '条记录');
             
             // 清空表单
@@ -827,14 +636,6 @@
             document.getElementById('writing-score').value = '';
             document.getElementById('external-score').value = '';
             document.getElementById('error-types').value = '';
-        }
-        
-        function clearLearningData() {
-            if (confirm('确定要清除所有学习数据吗？此操作不可撤销。')) {
-                learningData = [];
-                localStorage.removeItem('learningData');
-                alert('所有学习数据已清除');
-            }
         }
         
         function calculateStats() {
@@ -879,9 +680,9 @@
         function updateAvailableRewards() {
             const rewardsElement = document.getElementById('available-rewards');
             if (totalPoints >= 80) {
-                rewardsElement.innerHTML = '<span style="color:green;"><i class="fas fa-check-circle"></i> 恭喜！您已获得今日奖励：30分钟无负罪感娱乐时间</span>';
+                rewardsElement.innerHTML = '<span style="color:green;">✓ 恭喜！您已获得今日奖励：30分钟无负罪感娱乐时间</span>';
             } else {
-                rewardsElement.innerHTML = `<i class="fas fa-hourglass-half"></i> 还需${80 - totalPoints}分才能解锁今日奖励`;
+                rewardsElement.textContent = `还需${80 - totalPoints}分才能解锁今日奖励`;
             }
         }
         
@@ -890,71 +691,6 @@
                 alert('奖励已领取！享受您的30分钟娱乐时间吧！');
             } else {
                 alert(`尚未达到兑换要求，还需${80 - totalPoints}分`);
-            }
-        }
-        
-        function saveProgress() {
-            const progress = {
-                date: currentDate,
-                totalPoints: totalPoints,
-                checkboxes: {}
-            };
-            
-            // 保存所有复选框状态
-            document.querySelectorAll('.checkbox').forEach((checkbox, index) => {
-                progress.checkboxes[`checkbox${index}`] = checkbox.checked;
-            });
-            
-            localStorage.setItem(`progress_${currentDate}`, JSON.stringify(progress));
-        }
-        
-        function loadProgress() {
-            const savedProgress = localStorage.getItem(`progress_${currentDate}`);
-            
-            if (savedProgress) {
-                const progress = JSON.parse(savedProgress);
-                totalPoints = progress.totalPoints || 0;
-                
-                // 恢复所有复选框状态
-                document.querySelectorAll('.checkbox').forEach((checkbox, index) => {
-                    if (progress.checkboxes[`checkbox${index}`]) {
-                        checkbox.checked = true;
-                        
-                        // 更新对应的分数显示
-                        const points = parseInt(checkbox.getAttribute('data-points'));
-                        const row = checkbox.closest('tr');
-                        const pointId = row.id;
-                        document.getElementById(`point${pointId}`).textContent = points;
-                    } else {
-                        checkbox.checked = false;
-                        const row = checkbox.closest('tr');
-                        const pointId = row.id;
-                        document.getElementById(`point${pointId}`).textContent = '0';
-                    }
-                });
-                
-                // 更新进度显示
-                document.getElementById('current-points').textContent = totalPoints;
-                document.getElementById('progress-fill').style.width = `${totalPoints}%`;
-                document.getElementById('progress-text').textContent = `${totalPoints}%`;
-                
-                // 更新可兑换奖励显示
-                updateAvailableRewards();
-            } else {
-                // 重置为初始状态
-                totalPoints = 0;
-                document.querySelectorAll('.checkbox').forEach(checkbox => {
-                    checkbox.checked = false;
-                });
-                document.querySelectorAll('[id^="point"]').forEach(el => {
-                    if (el.id !== 'current-points') {
-                        el.textContent = '0';
-                    }
-                });
-                document.getElementById('current-points').textContent = '0';
-                document.getElementById('progress-fill').style.width = '0%';
-                document.getElementById('progress-text').textContent = '0%';
-                updateAvailableRewards();
             }
         }
     </script>
